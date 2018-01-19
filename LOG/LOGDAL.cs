@@ -20,27 +20,28 @@ namespace LOG
             {
                 conn.Open();
                 OleDbCommand cmd = new OleDbCommand();
-                
+
                 if (!CheckTableExists(LogConstants.UserTable))
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "CREATE TABLE " + LogConstants.UserTable + " (UserId INT, UserName VARCHAR, ContactNo VARCHAR , EmailId VARCHAR , Subject VARCHAR , Message VARCHAR );";
+                    cmd.CommandText = "CREATE TABLE " + LogConstants.UserTable + " (UserId INT, UserName VARCHAR,[Password] VARCHAR, ContactNo VARCHAR , EmailId VARCHAR , Subject VARCHAR , Message VARCHAR , IsAdmin BIT);";
                     cmd.ExecuteNonQuery();
 
                 }
 
                 int _id = GetPreviouId(LogConstants.UserTable);
-
-                string commnadTxt = "INSERT INTO " + LogConstants.UserTable + "(UserId,UserName,ContactNo,EmailId,Subject,Message) VALUES(@UserId,@UserName,@ContactNo,@EmailId,@Subject,@Message);";
+                string commnadTxt = "INSERT INTO " + LogConstants.UserTable + "(UserId,UserName,[Password],ContactNo,EmailId,Subject,Message,IsAdmin) VALUES(@UserId,@UserName,@Password,@ContactNo,@EmailId,@Subject,@Message,@IsAdmin);";
 
                 cmd = new OleDbCommand(commnadTxt, conn);
 
                 cmd.Parameters.AddWithValue("@UserId", _id + 1);
-                cmd.Parameters.AddWithValue("@UserName", model.UserName);
-                cmd.Parameters.AddWithValue("@ContactNo", model.ContactNo);
-                cmd.Parameters.AddWithValue("@EmailId", model.EmailId);
-                cmd.Parameters.AddWithValue("@Subject", model.Subject);
-                cmd.Parameters.AddWithValue("@Message", model.Message);
+                cmd.Parameters.AddWithValue("@UserName", model.UserName ?? string.Empty);
+                cmd.Parameters.AddWithValue("@Password", model.Password ?? string.Empty);
+                cmd.Parameters.AddWithValue("@ContactNo", model.ContactNo ?? string.Empty);
+                cmd.Parameters.AddWithValue("@EmailId", model.EmailId ?? string.Empty);
+                cmd.Parameters.AddWithValue("@Subject", model.Subject ?? string.Empty);
+                cmd.Parameters.AddWithValue("@Message", model.Message ?? string.Empty);
+                cmd.Parameters.AddWithValue("@IsAdmin", model.IsAdmin);
 
                 cmd.ExecuteNonQuery();
 
