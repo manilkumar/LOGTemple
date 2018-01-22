@@ -1,0 +1,29 @@
+﻿@using LOG.Models
+@{
+    var type = Convert.ToInt16(ViewBag.Type);
+
+}
+
+<section class="appear clearfix">
+    <div class="container">
+
+        @{
+            if (type == About.Mission)
+            {
+                <div>Mission</div>
+            }
+
+            if (type == About.WhoWeAre)
+            {
+                <div>WhoWeAre</div>
+            }
+
+
+            if (type == About.Gallery)
+            {
+                <div>Gallery</div>
+            }
+
+        }
+    </div>
+</section>

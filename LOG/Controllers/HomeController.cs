@@ -49,6 +49,12 @@ namespace LOG.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult About(short type = 0)
+        {
+            ViewBag.Type = type;
+
+            return View();
+        }
         public ActionResult AddAdmin()
         {
 

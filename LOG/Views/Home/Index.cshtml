@@ -137,14 +137,13 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
                     <form action="" method="post" role="form" class="contactForm">
-
-
 
                         <div class="form-group row">
 
@@ -179,8 +178,14 @@
                         <div class="form-group row">
                             <label class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Subject:</label>
                             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-
-                                <input type="text" class="form-control" name="Subject" id="subject" placeholder="Subject" data-rule="minlen:8" data-msg="Please enter at least 8 chars of subject" />
+                                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+                                    <input type="checkbox" id="chkQuery" />
+                                    <label for="chkQuery">Query</label>
+                                </div>
+                                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+                                    <input type="checkbox" id="chkRequest" />
+                                    <label for="chkRequest">Prayer Request</label>
+                                </div>
                             </div>
                             <div class="validation"></div>
 
@@ -201,7 +206,19 @@
                     </form>
 
                 </div>
-                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6"></div>
+
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                    <div class="form-group row col-md-offset-6">
+                        <h4><u>Address</u> </h4>
+                        <h5>Example <span class="label label-default">New</span></h5>
+                        <h5>Example <span class="label label-default">New</span></h5>
+                        <h5>Example <span class="label label-default">New</span></h5>
+                        <h5>Example <span class="label label-default">New</span></h5>
+
+
+                    </div>
+
+                </div>
             </div>
             <!-- ./span12 -->
         </div>
