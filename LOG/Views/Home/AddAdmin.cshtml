@@ -6,51 +6,72 @@
     Layout = null;
 }
 
-<h2>AddAdmin</h2>
+<link rel="stylesheet" href="~/css/bootstrap.css">
+<link rel="stylesheet" href="~/css/bootstrap-theme.css">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>UserModel</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserName)
-            @Html.ValidationMessageFor(model => model.UserName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ContactNo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ContactNo)
-            @Html.ValidationMessageFor(model => model.ContactNo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EmailId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EmailId)
-            @Html.ValidationMessageFor(model => model.EmailId)
-        </div>
+<style type="text/css">
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
 
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
+<div class="container centered">
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+
+                <div class="panel-heading"><strong>Add Admin</strong> </div>
+
+                <div class="panel-body">
+
+                    <form action="/Home/AddAdmin" class="form-horizontal" method="post" role="form">
+
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">UserName</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="UserName" placeholder="UserName" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" name="Password" placeholder="Password" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">ContactNo</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="ContactNo" class="form-control" placeholder="Contact Number" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">EmailId</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="EmailId" placeholder="EmailId" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-success btn-sm">Add</button>
+                                <a href="/Home/Index" class="btn btn-default btn-sm">Cancel</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

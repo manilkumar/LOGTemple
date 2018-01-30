@@ -1,29 +1,34 @@
 ﻿@using LOG.Models
+
 @{
     var type = Convert.ToInt16(ViewBag.Type);
 
 }
 
 <section class="appear clearfix">
+
     <div class="container">
 
-        @{
-            if (type == About.Mission)
-            {
+        <div class="row mar-bot40 title">
+
+            @{
+                if (type == About.Mission)
+                {
                 <div>Mission</div>
-            }
+                }
 
-            if (type == About.WhoWeAre)
-            {
+                if (type == About.WhoWeAre)
+                {
                 <div>WhoWeAre</div>
-            }
+                }
 
 
-            if (type == About.Gallery)
-            {
+                if (type == About.Gallery)
+                {
                 <div>Gallery</div>
-            }
+                }
 
-        }
+            }
+        </div>
     </div>
 </section>

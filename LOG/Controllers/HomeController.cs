@@ -10,6 +10,8 @@ namespace LOG.Controllers
 {
     public class HomeController : Controller
     {
+
+        LOGDAL logDAL = new LOGDAL();
         //
         // GET: /Home/
 
@@ -27,7 +29,6 @@ namespace LOG.Controllers
         [HttpPost]
         public ActionResult SaveUser(UserModel model)
         {
-            LOGDAL logDAL = new LOGDAL();
 
             logDAL.InsertUser(model);
 
@@ -65,7 +66,6 @@ namespace LOG.Controllers
         [HttpPost]
         public ActionResult AddAdmin(UserModel model)
         {
-            LOGDAL logDAL = new LOGDAL();
 
             model.IsAdmin = true;
 
@@ -73,6 +73,12 @@ namespace LOG.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+        public ActionResult Upload()
+        {
+
+            return View();
         }
     }
 }
