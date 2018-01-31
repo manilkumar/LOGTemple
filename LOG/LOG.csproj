@@ -214,6 +214,7 @@
     <Content Include="js\skrollr.min.js" />
     <Content Include="js\SmoothScroll.js" />
     <Content Include="js\stellar.js" />
+    <Content Include="js\UploadScript.js" />
     <Content Include="js\validate.js" />
     <Content Include="js\wow.min.js" />
     <Content Include="skin\default.css" />
@@ -275,7 +276,7 @@
     <Content Include="Gallery\movie.ogg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_UploadNew.cshtml.cshtml" />
+    <Content Include="Views\Shared\_UploadNew.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

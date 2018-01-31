@@ -80,5 +80,18 @@ namespace LOG.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Upload(Upload)
+        {
+
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult UploadNew()
+        {
+
+            return PartialView("_UploadNew");
+        }
     }
 }

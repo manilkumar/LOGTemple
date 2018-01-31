@@ -33,4 +33,13 @@ namespace LOG.Models
 
         public string Password { get; set; }
     }
+
+    public class UploadModel
+    {
+    
+
+    
+    }
+
+
 }
