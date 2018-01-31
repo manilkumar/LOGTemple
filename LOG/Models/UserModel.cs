@@ -36,8 +36,12 @@ namespace LOG.Models
 
     public class UploadModel
     {
-    
 
+        public string UploadType { get; set; }
+
+        public string Title { get; set; }
+
+        public string FilePath { get; set; }
     
     }
 

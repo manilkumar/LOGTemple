@@ -3,14 +3,14 @@
     <td class="col-xs-4">
         <label class="col-xs-2">Title</label>
         <div class="col-xs-10">
-            <input type="text" class="form-control" placeholder="Title of file" name="FileName" />
+            <input type="text" class="form-control" placeholder="Title of file" id="title" name="FileName" />
         </div>
     </td>
     <td class="col-xs-4">
         <label class="col-xs-2">Type</label>
         <div class="col-xs-10">
 
-            @Html.DropDownList("FileType", Upload.GetUploadFileTypes() as IEnumerable<SelectListItem>, "Select Type", new { })
+            @Html.DropDownList("FileType", Upload.GetUploadFileTypes() as IEnumerable<SelectListItem>, "Select Type", new { @id = "type" })
         </div>
     </td>
     <td class="col-xs-4">

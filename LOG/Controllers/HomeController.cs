@@ -1,6 +1,7 @@
 ﻿using LOG.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -82,8 +83,38 @@ namespace LOG.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload(Upload)
+        public ActionResult UploadFiles(UploadModel model)
         {
+
+            try
+            {
+
+                HttpFileCollectionBase files = Request.Files;
+
+                if (files.Count > 0)
+                {
+
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        HttpPostedFileBase file = files[i];
+
+                        string _FileName = Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/Gallery"), _FileName);
+                        file.SaveAs(_path);
+
+                        model.FilePath = _path;
+
+                        logDAL.InsertUploadItem(model);
+                    }
+
+                }
+            }
+
+            catch
+            {
+
+
+            }
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }

@@ -10,6 +10,8 @@ namespace LOG.Models
     {
 
         public static string UserTable = "LogUsers";
+
+        public static string UploadTable = "UploadItems";
     }
 
     public static class About

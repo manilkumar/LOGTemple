@@ -29,7 +29,7 @@ namespace LOG
 
                 }
 
-                int _id = GetPreviouId(LogConstants.UserTable);
+                int _id = GetPreviouId(LogConstants.UserTable, "UserId");
                 string commnadTxt = "INSERT INTO " + LogConstants.UserTable + "(UserId,UserName,[Password],ContactNo,EmailId,Subject,Message,IsAdmin) VALUES(@UserId,@UserName,@Password,@ContactNo,@EmailId,@Subject,@Message,@IsAdmin);";
 
                 cmd = new OleDbCommand(commnadTxt, conn);
@@ -51,7 +51,7 @@ namespace LOG
 
         }
 
-        public int GetPreviouId(string table)
+        public int GetPreviouId(string table, string column)
         {
             var connectionString = common.GetConnectionString();
 
@@ -65,7 +65,7 @@ namespace LOG
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.Connection = conn;
 
-                cmd.CommandText = "SELECT Max(UserId) FROM [" + table + "]";
+                cmd.CommandText = "SELECT Max(" + column + ") FROM [" + table + "]";
 
                 if (!(cmd.ExecuteScalar() is DBNull))
                 {
@@ -97,6 +97,40 @@ namespace LOG
             }
 
             return exists;
+        }
+
+        public void InsertUploadItem(UploadModel model)
+        {
+            var connectionString = common.GetConnectionString();
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                conn.Open();
+                OleDbCommand cmd = new OleDbCommand();
+
+                if (!CheckTableExists(LogConstants.UploadTable))
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "CREATE TABLE " + LogConstants.UploadTable + " (UploadId INT, UploadType VARCHAR, Title VARCHAR ,FilePath VARCHAR);";
+                    cmd.ExecuteNonQuery();
+
+                }
+
+                int _id = GetPreviouId(LogConstants.UploadTable, "UploadId");
+                string commnadTxt = "INSERT INTO " + LogConstants.UploadTable + "(UploadId,UploadType,Title,FilePath) VALUES(@UploadId,@UploadType,@Title,@FilePath);";
+
+                cmd = new OleDbCommand(commnadTxt, conn);
+
+                cmd.Parameters.AddWithValue("@UploadId", _id + 1);
+                cmd.Parameters.AddWithValue("@UploadType", model.UploadType ?? string.Empty);
+                cmd.Parameters.AddWithValue("@Title", model.Title ?? string.Empty);
+                cmd.Parameters.AddWithValue("@FilePath", model.FilePath ?? string.Empty);
+
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+            }
         }
     }
 }
