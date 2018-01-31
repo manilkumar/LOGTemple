@@ -78,6 +78,7 @@ namespace LOG.Controllers
 
         public ActionResult Upload()
         {
+            ViewBag.Items = logDAL.GetUploadedItems();
 
             return View();
         }

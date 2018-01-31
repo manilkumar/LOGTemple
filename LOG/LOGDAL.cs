@@ -132,5 +132,33 @@ namespace LOG
                 conn.Close();
             }
         }
+
+        public List<UploadModel> GetUploadedItems()
+        {
+            var connectionString = common.GetConnectionString();
+            DataSet ds = new DataSet();
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                conn.Open();
+                OleDbCommand cmd = new OleDbCommand();
+
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM  " + LogConstants.UploadTable + ";";
+                OleDbDataAdapter oda = new OleDbDataAdapter(cmd);
+                oda.Fill(ds);
+
+                conn.Close();
+            }
+
+            var itemsList = (from DataRow dr in ds.Tables[0].Rows
+                             select new UploadModel()
+                             {
+                                 UploadType = dr["UploadType"].ToString(),
+                                 Title = dr["Title"].ToString(),
+                                 FilePath = dr["FilePath"].ToString()
+                             }).ToList();
+
+            return itemsList;
+        }
     }
 }
