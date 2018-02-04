@@ -5,6 +5,11 @@ using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json.Linq;
+using System.Web.Script.Serialization;
+using System.IO;
+using Newtonsoft.Json;
+
 
 namespace LOG
 {
@@ -14,69 +19,49 @@ namespace LOG
 
         public void InsertUser(UserModel model)
         {
-            var connectionString = common.GetConnectionString();
+            var usersList = new List<UserModel>();
 
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UserTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
             {
-                conn.Open();
-                OleDbCommand cmd = new OleDbCommand();
 
-                if (!CheckTableExists(LogConstants.UserTable))
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "CREATE TABLE " + LogConstants.UserTable + " (UserId INT, UserName VARCHAR,[Password] VARCHAR, ContactNo VARCHAR , EmailId VARCHAR , Subject VARCHAR , Message VARCHAR , IsAdmin BIT);";
-                    cmd.ExecuteNonQuery();
 
-                }
+                usersList = JsonConvert.DeserializeObject<List<UserModel>>(File.ReadAllText(jsonFilePath));
 
-                int _id = GetPreviouId(LogConstants.UserTable, "UserId");
-                string commnadTxt = "INSERT INTO " + LogConstants.UserTable + "(UserId,UserName,[Password],ContactNo,EmailId,Subject,Message,IsAdmin) VALUES(@UserId,@UserName,@Password,@ContactNo,@EmailId,@Subject,@Message,@IsAdmin);";
+                model.UserId = usersList.Count() > 0 ? usersList.Max(i => i.UserId) + 1 : 1;
 
-                cmd = new OleDbCommand(commnadTxt, conn);
-
-                cmd.Parameters.AddWithValue("@UserId", _id + 1);
-                cmd.Parameters.AddWithValue("@UserName", model.UserName ?? string.Empty);
-                cmd.Parameters.AddWithValue("@Password", model.Password ?? string.Empty);
-                cmd.Parameters.AddWithValue("@ContactNo", model.ContactNo ?? string.Empty);
-                cmd.Parameters.AddWithValue("@EmailId", model.EmailId ?? string.Empty);
-                cmd.Parameters.AddWithValue("@Subject", model.Subject ?? string.Empty);
-                cmd.Parameters.AddWithValue("@Message", model.Message ?? string.Empty);
-                cmd.Parameters.AddWithValue("@IsAdmin", model.IsAdmin);
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
             }
 
+            else { model.UserId = 1; }
+
+            usersList.Add(model);
+
+            string jsondata = JsonConvert.SerializeObject(usersList, Formatting.Indented);
+
+            System.IO.File.WriteAllText(LogConstants.APP_DATA_PATH + "" + LogConstants.UserTable + ".json", jsondata);
 
         }
 
+
+
+
         public int GetPreviouId(string table, string column)
         {
-            var connectionString = common.GetConnectionString();
-
-            DataSet ds = new DataSet();
 
             int maxId = 0;
 
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + table + ".json";
+
+            if (File.Exists(jsonFilePath))
             {
-                conn.Open();
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.Connection = conn;
+                var json = File.ReadAllText(jsonFilePath);
 
-                cmd.CommandText = "SELECT Max(" + column + ") FROM [" + table + "]";
-
-                if (!(cmd.ExecuteScalar() is DBNull))
-                {
-                    maxId = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-
-                cmd = null;
-
+                var jsonObj = JObject.Parse(json);
             }
 
-            return maxId;
+            return maxId + 1;
 
         }
 
@@ -101,62 +86,35 @@ namespace LOG
 
         public void InsertUploadItem(UploadModel model)
         {
-            var connectionString = common.GetConnectionString();
 
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            var uploadItems = new List<UploadModel>();
+
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
             {
-                conn.Open();
-                OleDbCommand cmd = new OleDbCommand();
-
-                if (!CheckTableExists(LogConstants.UploadTable))
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "CREATE TABLE " + LogConstants.UploadTable + " (UploadId INT, UploadType VARCHAR, Title VARCHAR ,FilePath VARCHAR);";
-                    cmd.ExecuteNonQuery();
-
-                }
-
-                int _id = GetPreviouId(LogConstants.UploadTable, "UploadId");
-                string commnadTxt = "INSERT INTO " + LogConstants.UploadTable + "(UploadId,UploadType,Title,FilePath) VALUES(@UploadId,@UploadType,@Title,@FilePath);";
-
-                cmd = new OleDbCommand(commnadTxt, conn);
-
-                cmd.Parameters.AddWithValue("@UploadId", _id + 1);
-                cmd.Parameters.AddWithValue("@UploadType", model.UploadType ?? string.Empty);
-                cmd.Parameters.AddWithValue("@Title", model.Title ?? string.Empty);
-                cmd.Parameters.AddWithValue("@FilePath", model.FilePath ?? string.Empty);
 
 
-                cmd.ExecuteNonQuery();
+                uploadItems = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath));
 
-                conn.Close();
+                model.UploadId = uploadItems.Count() > 0 ? uploadItems.Max(i => i.UploadId) + 1 : 1;
+
             }
+            else { model.UploadId = 1; }
+
+            uploadItems.Add(model);
+
+            string jsondata = JsonConvert.SerializeObject(uploadItems, Formatting.Indented);
+
+            System.IO.File.WriteAllText(LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json", jsondata);
+
         }
+
 
         public List<UploadModel> GetUploadedItems()
         {
-            var connectionString = common.GetConnectionString();
-            DataSet ds = new DataSet();
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
-            {
-                conn.Open();
-                OleDbCommand cmd = new OleDbCommand();
-
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT * FROM  " + LogConstants.UploadTable + ";";
-                OleDbDataAdapter oda = new OleDbDataAdapter(cmd);
-                oda.Fill(ds);
-
-                conn.Close();
-            }
-
-            var itemsList = (from DataRow dr in ds.Tables[0].Rows
-                             select new UploadModel()
-                             {
-                                 UploadType = dr["UploadType"].ToString(),
-                                 Title = dr["Title"].ToString(),
-                                 FilePath = dr["FilePath"].ToString()
-                             }).ToList();
+            var itemsList = new List<UploadModel>();
 
             return itemsList;
         }

@@ -24,6 +24,10 @@ namespace LOG.Models
         public string Message { get; set; }
 
         public bool IsAdmin { get; set; }
+
+        public bool IsQuery { get; set; }
+
+        public bool IsPrayerRequest { get; set; }
     }
 
     public class LoginModel
@@ -42,6 +46,8 @@ namespace LOG.Models
         public string Title { get; set; }
 
         public string FilePath { get; set; }
+
+        public int UploadId { get; set; }
     
     }
 

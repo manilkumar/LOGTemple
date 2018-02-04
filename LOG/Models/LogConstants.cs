@@ -12,6 +12,8 @@ namespace LOG.Models
         public static string UserTable = "LogUsers";
 
         public static string UploadTable = "UploadItems";
+
+        public static string APP_DATA_PATH = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/");
     }
 
     public static class About

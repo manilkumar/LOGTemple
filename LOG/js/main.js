@@ -12,6 +12,18 @@
         return false;
     });
 
+    $(document).on('change', 'input[type=checkbox],input[type=radio]', function () {
+
+        if ($(this).is(":checked")) {
+
+            $(this).val("true")
+        } else {
+            $(this).val("false")
+
+        }
+
+    })
+
     // local scroll
     jQuery('.navbar').localScroll({ hash: true, offset: { top: 0 }, duration: 800, easing: 'easeInOutExpo' });
 
