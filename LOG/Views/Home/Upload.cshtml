@@ -55,30 +55,34 @@
                             <tr>
                                 <td class="col-xs-4">@item.Title</td>
                                 <td class="col-xs-2">@(Upload.GetUploadType(item.UploadType))</td>
-                                <td class="col-xs-6">
+                                <td class="col-xs-5">
 
 
                                     @switch (Convert.ToInt16(item.UploadType))
                                     {
 
                                         case Upload.Tract:
-                                                
-                                        <a href="@item.FilePath">@item.Title</a>
-                                                
+
+                                            <a href="~/Gallery/@( Path.GetFileName(item.FilePath))" target="_blank">@item.Title</a>
+
                                             break;
 
                                         case Upload.Audio:
-                                        <audio src="@item.FilePath">@item.Title</audio>
+                                        <audio src="~/Gallery/@( Path.GetFileName(item.FilePath))" controls="controls">@item.Title</audio>
                                             break;
 
                                         case Upload.Vedio:
-                                        <vedio src="@item.FilePath">@item.Title</vedio>
+                                        <vedio src="~/Gallery/@(Path.GetFileName(item.FilePath))">@item.Title</vedio>
                                             break;
 
                                     }
 
 
 
+                                </td>
+
+                                <td class="col-xs-1">
+                                    <button type="button" class="btn-danger" id="btnDelete" ><span class="fa fa-remove"></span></button>
                                 </td>
                             </tr>
                         }

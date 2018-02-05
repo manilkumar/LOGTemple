@@ -10,6 +10,14 @@
         });
     });
 
+    $(document).on('click', '#btnDelete', function () {
+
+        var result = confirm("Want to delete?");
+        if (result) {
+            alert("YES");
+        }
+    })
+
     $(document).on('click', '#btnSaveItems', function () {
 
         var parent = $(this).parents('tr:first');
