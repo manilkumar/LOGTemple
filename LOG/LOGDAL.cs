@@ -116,6 +116,16 @@ namespace LOG
         {
             var itemsList = new List<UploadModel>();
 
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
+            {
+
+                itemsList = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath));
+
+            }
+
             return itemsList;
         }
     }

@@ -42,5 +42,10 @@ namespace LOG.Models
             return list;
 
         }
+
+        public static string GetUploadType(string type)
+        {
+           return GetUploadFileTypes().Where(i => i.Value == type.ToString()).FirstOrDefault().Text;
+        }
     }
 }

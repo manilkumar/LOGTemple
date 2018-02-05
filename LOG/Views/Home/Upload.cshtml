@@ -1,4 +1,6 @@
-﻿<style type="text/css">
+﻿@using LOG.Models
+
+<style type="text/css">
     .table-fixed thead {
         width: 100%;
     }
@@ -26,7 +28,7 @@
     }
 </style>
 
-
+@{var itemsList = ViewBag.Items as List<UploadModel>;}
 
 
 <div class="container">
@@ -41,16 +43,45 @@
                     <thead>
                         <tr>
                             <th class="col-xs-4">Title</th>
-                            <th class="col-xs-8">Tract/Vedio/Audio</th>
+                            <th class="col-xs-2">Type</th>
+                            <th class="col-xs-6"></th>
                         </tr>
                     </thead>
 
                     <tbody id="uploadTbody">
 
-                        <tr>
-                            <td class="col-xs-4">1</td>
-                            <td class="col-xs-8">Mike Adams</td>
-                        </tr>
+                        @foreach (var item in itemsList)
+                        {
+                            <tr>
+                                <td class="col-xs-4">@item.Title</td>
+                                <td class="col-xs-2">@(Upload.GetUploadType(item.UploadType))</td>
+                                <td class="col-xs-6">
+
+
+                                    @switch (Convert.ToInt16(item.UploadType))
+                                    {
+
+                                        case Upload.Tract:
+                                                
+                                        <a href="@item.FilePath">@item.Title</a>
+                                                
+                                            break;
+
+                                        case Upload.Audio:
+                                        <audio src="@item.FilePath">@item.Title</audio>
+                                            break;
+
+                                        case Upload.Vedio:
+                                        <vedio src="@item.FilePath">@item.Title</vedio>
+                                            break;
+
+                                    }
+
+
+
+                                </td>
+                            </tr>
+                        }
 
                     </tbody>
                 </table>
