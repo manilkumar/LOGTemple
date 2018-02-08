@@ -24,6 +24,24 @@
 
     })
 
+    $(document).on('click', '#a_contact', function () {
+
+        if ($('section#contact').length == 0) {
+
+            window.location.href = location.origin + "/#contact"
+        }
+    });
+
+    $(document).on('click', '#a_home', function () {
+
+        if ($("section#index").length == 0) {
+
+            window.location.href = location.origin + "/#index"
+
+        }
+
+    });
+
     // local scroll
     jQuery('.navbar').localScroll({ hash: true, offset: { top: 0 }, duration: 800, easing: 'easeInOutExpo' });
 

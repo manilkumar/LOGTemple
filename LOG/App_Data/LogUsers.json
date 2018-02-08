@@ -1,8 +1,8 @@
 [
   {
     "UserId": 1,
-    "UserName": "ertert",
-    "Password": "hgjghjhjhg",
+    "UserName": "admin",
+    "Password": "admin",
     "ContactNo": "759837598345",
     "EmailId": "fsfslkfjsdf@g.com",
     "Subject": null,
@@ -10,5 +10,29 @@
     "IsAdmin": true,
     "IsQuery": false,
     "IsPrayerRequest": false
+  },
+  {
+    "UserId": 2,
+    "UserName": "anil",
+    "Password": null,
+    "ContactNo": "84935340580",
+    "EmailId": "fdslkf@gmo.com",
+    "Subject": null,
+    "Message": "Please pray for my marriage",
+    "IsAdmin": false,
+    "IsQuery": false,
+    "IsPrayerRequest": true
+  },
+  {
+    "UserId": 3,
+    "UserName": "ertert",
+    "Password": null,
+    "ContactNo": "543io543oi5",
+    "EmailId": "fdsjfjkl@g.com",
+    "Subject": null,
+    "Message": "gdfgfgfd gfd gfdgdf",
+    "IsAdmin": false,
+    "IsQuery": true,
+    "IsPrayerRequest": true
   }
 ]

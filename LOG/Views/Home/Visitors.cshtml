@@ -1,0 +1,43 @@
+﻿@using LOG.Models
+@model  IEnumerable<LOG.Models.UserModel>
+
+
+
+<div class="container">
+    <div class="row mar-bot40" style="padding-top: 150px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>All Visitors</b>
+            </div>
+            <div class="panel-body">
+                <table class="table table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-2">Name</th>
+                            <th class="col-xs-2">Contact No</th>
+                            <th class="col-xs-2">EmailId</th>
+                            <th class="col-xs-2">Subject</th>
+                            <th class="col-xs-4">Comment</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="uploadTbody">
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="col-xs-2">@item.UserName</td>
+                                <td class="col-xs-2">@item.ContactNo</td>
+                                <td class="col-xs-2">@item.EmailId</td>
+                                <td class="col-xs-2">@((item.IsPrayerRequest && item.IsQuery) ? "Prayer Request & Queries" : (item.IsQuery ? "Query" : "Prayer Request"))</td>
+                                <td class="col-xs-4">@item.Message</td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

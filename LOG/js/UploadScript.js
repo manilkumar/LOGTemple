@@ -12,9 +12,25 @@
 
     $(document).on('click', '#btnDelete', function () {
 
+        var parent = $(this).parents("tr:first");
+
+        var id = $(this).data('id');
+
         var result = confirm("Want to delete?");
+
         if (result) {
-            alert("YES");
+
+            $.post("/Home/DeleteUploaded", { uploadId: id }, function (success) {
+
+                alert(success ? "Deleted Succesfully" : "Unable to Delete");
+
+                if (success) {
+
+                    $(parent).remove();
+                }
+
+
+            });
         }
     })
 

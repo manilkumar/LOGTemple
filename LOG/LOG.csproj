@@ -218,6 +218,15 @@
     <Content Include="js\UploadScript.js" />
     <Content Include="js\validate.js" />
     <Content Include="js\wow.min.js" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\.gitattributes" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\examples\example.html" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\index.html" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\media\interlude.mp3" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\media\small.mp4" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\css\controls.png" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\css\mkhplayer.default.css" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\js\jquery-1.7.1.min.js" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\js\jquery.mkhplayer.js" />
     <Content Include="skin\default.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -278,6 +287,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_UploadNew.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\LICENSE" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\README.md" />
+    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\_config.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Messages.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Visitors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Gallery.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

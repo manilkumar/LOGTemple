@@ -29,6 +29,8 @@ namespace LOG.Models
         public const short Tract = 1;
         public const short Audio = 2;
         public const short Vedio = 3;
+        public const short Gallery = 4;
+
 
         public static List<SelectListItem> GetUploadFileTypes()
         {
@@ -38,6 +40,7 @@ namespace LOG.Models
             list.Add(new SelectListItem { Value = Upload.Tract.ToString(), Text = "Tract" });
             list.Add(new SelectListItem { Value = Upload.Audio.ToString(), Text = "Audio" });
             list.Add(new SelectListItem { Value = Upload.Vedio.ToString(), Text = "Vedio" });
+            list.Add(new SelectListItem { Value = Upload.Gallery.ToString(), Text = "Gallery" });
 
             return list;
 

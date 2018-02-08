@@ -1,40 +1,18 @@
 ﻿@using LOG.Models
+@model  IEnumerable<LOG.Models.UploadModel>
 
 <style type="text/css">
-    .table-fixed thead {
-        width: 100%;
-    }
-
-    .table-fixed tbody {
-        height: 230px;
-        overflow-y: auto;
-        width: 100%;
-    }
-
-        .table-fixed tbody td, .table-fixed thead > tr > th {
-            float: left;
-            border-bottom-width: 0;
-        }
-
-
-    .pull-left {
-        text-align: left !important;
-    }
-
-    .panel-body {
-        padding: 0px;
+    #uploadTbody a {
+        text-decoration: underline;
     }
 </style>
-
-@{var itemsList = ViewBag.Items as List<UploadModel>;}
 
 
 <div class="container">
     <div class="row mar-bot40" style="padding-top: 150px">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <b>Uploaded Items</b>
-                <button type="button" class="btn btn-primary pull-right" id="btnNewUpload"><span class="glyphicon glyphicon-plus"></span>Upload</button>
+                <b>God's Messages</b>
             </div>
             <div class="panel-body">
                 <table class="table table-fixed">
@@ -48,12 +26,12 @@
 
                     <tbody id="uploadTbody">
 
-                        @foreach (var item in itemsList)
+                        @foreach (var item in Model)
                         {
                             <tr>
                                 <td class="col-xs-4">@item.Title</td>
                                 <td class="col-xs-2">@(Upload.GetUploadType(item.UploadType))</td>
-                                <td class="col-xs-5">
+                                <td class="col-xs-6 text-center">
 
 
                                     @switch (Convert.ToInt16(item.UploadType))
@@ -61,7 +39,7 @@
 
                                         case Upload.Tract:
 
-                                        <a href="~/Gallery/@( Path.GetFileName(item.FilePath))" target="_blank">@item.Title</a>
+                                        <a href="~/Gallery/@( Path.GetFileName(item.FilePath))" target="_blank"><span class="fa fa-file-pdf-o"></span>@item.Title</a>
 
                                             break;
 
@@ -70,10 +48,9 @@
                                             break;
 
                                         case Upload.Vedio:
-                                        
                                         <video controls="controls">
 
-                                            <source src="~/Gallery/@(Path.GetFileName(item.FilePath))" type="video/ogg"/>
+                                            <source src="~/Gallery/@(Path.GetFileName(item.FilePath))"/>
                                         </video>
                                             break;
 
@@ -83,9 +60,7 @@
 
                                 </td>
 
-                                <td class="col-xs-1">
-                                    <button type="button" class="btn-danger" id="btnDelete" data-id="@item.UploadId"><span class="fa fa-remove"></span></button>
-                                </td>
+
                             </tr>
                         }
 
@@ -95,5 +70,3 @@
         </div>
     </div>
 </div>
-
-<script src="~/js/UploadScript.js"></script>

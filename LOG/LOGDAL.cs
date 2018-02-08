@@ -128,5 +128,118 @@ namespace LOG
 
             return itemsList;
         }
+
+        public List<UploadModel> GetMessages(short type)
+        {
+
+            var itemsList = new List<UploadModel>();
+
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
+            {
+
+                itemsList = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath)).Where(i => i.UploadType == type.ToString()).ToList();
+
+            }
+
+            return itemsList;
+        }
+
+        public bool IsAdmin(UserModel login)
+        {
+            var usersList = new List<UserModel>();
+
+            bool isAdmin = false;
+
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UserTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
+            {
+
+                usersList = JsonConvert.DeserializeObject<List<UserModel>>(File.ReadAllText(jsonFilePath));
+
+                if (usersList.Any(i => i.UserName == login.UserName && i.Password == login.Password && i.IsAdmin == true))
+                {
+
+                    isAdmin = true;
+                }
+            }
+
+            return isAdmin;
+        }
+
+        public List<UserModel> GetAllVisitors()
+        {
+            var visitorsList = new List<UserModel>();
+
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UserTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
+            {
+
+                visitorsList = JsonConvert.DeserializeObject<List<UserModel>>(File.ReadAllText(jsonFilePath)).Where(i => i.IsAdmin == false).ToList();
+
+            }
+
+            return visitorsList;
+        }
+
+        public bool DeleteUploadedItem(int uploadId)
+        {
+            var isDeleted = true;
+
+            var itemsList = new List<UploadModel>();
+
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json";
+
+            try
+            {
+
+                itemsList = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath));
+
+                var toBeDeleted = itemsList.Where(i => i.UploadId == uploadId).FirstOrDefault();
+
+                itemsList.Remove(toBeDeleted);
+
+                string jsondata = JsonConvert.SerializeObject(itemsList, Formatting.Indented);
+
+                System.IO.File.WriteAllText(LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json", jsondata);
+
+                if (File.Exists(toBeDeleted.FilePath))
+                {
+                    File.Delete(toBeDeleted.FilePath);
+
+                }
+            }
+            catch
+            {
+
+                isDeleted = false;
+            }
+
+
+            return isDeleted;
+        }
+
+        public List<UploadModel> GetGalleryImages()
+        {
+            var itemsList = new List<UploadModel>();
+
+            string jsonFilePath = LogConstants.APP_DATA_PATH + "" + LogConstants.UploadTable + ".json";
+
+
+            if (File.Exists(jsonFilePath))
+            {
+
+                itemsList = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath)).Where(i => i.UploadType == Upload.Gallery.ToString()).ToList();
+
+            }
+
+            return itemsList;
+        }
     }
 }

@@ -50,13 +50,14 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
 
-                        <li class="active"><a href="#index">Home</a></li>
+                        <li class="active"><a href="#index" id="a_home">Home</a></li>
 
 
                         @if (HttpContext.Current.User.Identity.IsAuthenticated)
                         {
 
                             <li class="active"><a href="/Home/Upload">Upload</a></li>
+                            <li class="active"><a href="/Home/Visitors">Vistors</a></li>
 
                         }
 
@@ -69,7 +70,6 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/Home/About?type=1">Mission & Vison</a></li>
                                 <li><a href="/Home/About?type=2">Who We Are?</a></li>
-                                <li><a href="/Home/About?type=3">Gallery</a></li>
 
                             </ul>
 
@@ -81,14 +81,16 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Tracts</a></li>
-                                <li><a href="#">Audios</a></li>
-                                <li><a href="#">Vedios</a></li>
+                                <li><a href="/Home/Messages?type=@LOG.Models.Upload.Tract">Tracts</a></li>
+                                <li><a href="/Home/Messages?type=@LOG.Models.Upload.Audio">Audios</a></li>
+                                <li><a href="/Home/Messages?type=@LOG.Models.Upload.Vedio">Vedios</a></li>
                             </ul>
 
                         </li>
 
-                        <li class="dropdown">
+                        <li><a href="/Home/Ministries">OUR MINISTRIES</a></li>
+
+                        @*   <li class="dropdown">
 
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">OUR MINISTRIES
                                 <b class="caret"></b>
@@ -99,9 +101,17 @@
                                 <li><a href="#">Monthly First Saturday</a></li>
                             </ul>
 
-                        </li>
+                        </li>*@
 
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/Home/Gallery">Gallery</a></li>
+
+                        <li><a href="#contact" id="a_contact">Contact</a></li>
+
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="/Home/Logout">Logout</a></li>
+                             
+                        }
                     </ul>
                 </div>
                 <!--/.navbar-collapse -->

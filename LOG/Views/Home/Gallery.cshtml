@@ -1,0 +1,41 @@
+﻿@using LOG.Models
+@model  IEnumerable<LOG.Models.UploadModel>
+
+<style type="text/css">
+    #uploadTbody a {
+        text-decoration: underline;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row mar-bot40" style="padding-top: 150px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>Our Church Memorable Moments</b>
+            </div>
+            <div class="panel-body">
+                <table class="table table-fixed">
+
+                    <tbody id="uploadTbody">
+
+                        <tr class="col-xs-12">
+
+                            @foreach (var item in Model)
+                            {   
+                                <td class="col-xs-6">
+
+                                    <img src="~/Gallery/@(Path.GetFileName(item.FilePath))" width="150" height="150" alt="Image not found" />
+
+                                </td>
+
+                            }
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

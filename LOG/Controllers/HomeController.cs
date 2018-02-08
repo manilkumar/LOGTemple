@@ -36,9 +36,14 @@ namespace LOG.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult Login(LoginModel login)
+        public ActionResult Login(UserModel login)
         {
-            FormsAuthentication.SetAuthCookie(login.UserName, true);
+            var isAdmin = logDAL.IsAdmin(login);
+
+            if (isAdmin)
+            {
+                FormsAuthentication.SetAuthCookie(login.UserName, true);
+            }
 
             return RedirectToAction("Index");
 
@@ -57,6 +62,8 @@ namespace LOG.Controllers
 
             return View();
         }
+
+        [Authorize]
         public ActionResult AddAdmin()
         {
 
@@ -65,6 +72,7 @@ namespace LOG.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddAdmin(UserModel model)
         {
 
@@ -76,6 +84,16 @@ namespace LOG.Controllers
 
         }
 
+        [Authorize]
+        public ActionResult Visitors()
+        {
+            var visitors = logDAL.GetAllVisitors();
+
+            return View(visitors);
+
+        }
+
+        [Authorize]
         public ActionResult Upload()
         {
             ViewBag.Items = logDAL.GetUploadedItems();
@@ -84,6 +102,17 @@ namespace LOG.Controllers
         }
 
         [HttpPost]
+        public ActionResult DeleteUploaded(int uploadId)
+        {
+
+            var isDeleted = logDAL.DeleteUploadedItem(uploadId);
+
+            return Json(isDeleted, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        [Authorize]
         public ActionResult UploadFiles(UploadModel model)
         {
 
@@ -120,10 +149,26 @@ namespace LOG.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Messages(short type)
+        {
+            var messages = logDAL.GetMessages(type);
+
+            return View(messages);
+        }
+
         public PartialViewResult UploadNew()
         {
 
             return PartialView("_UploadNew");
+        }
+
+        public ActionResult Gallery()
+        {
+            var gallery = logDAL.GetGalleryImages();
+
+            return View(gallery);
+
+            return View();
         }
     }
 }
