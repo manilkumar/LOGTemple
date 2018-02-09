@@ -2104,3 +2104,7 @@ input:-webkit-autofill {
 }
 
 
+li.heading {
+    list-style-type: none !important; 
+    font-weight: bold;
+}

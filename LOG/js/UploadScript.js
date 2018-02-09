@@ -6,9 +6,15 @@
 
             $('#uploadTbody').append($(html));
 
-
+            $("html, body").animate({ scrollTop: $('#uploadTbody').height() }, 1000);
         });
     });
+
+    $(document).on('click', '#btnCancelUpload', function () {
+
+        $(this).parents('tr:first').remove();
+    });
+
 
     $(document).on('click', '#btnDelete', function () {
 
@@ -60,6 +66,8 @@
             data: fileData,
             success: function (result) {
                 alert(result);
+
+                location.reload();
             },
             error: function (err) {
                 alert(err.statusText);

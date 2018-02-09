@@ -5,6 +5,12 @@
     #uploadTbody a {
         text-decoration: underline;
     }
+
+    #uploadTbody img:hover {
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
 </style>
 
 
@@ -20,16 +26,18 @@
                     <tbody id="uploadTbody">
 
                         <tr class="col-xs-12">
+                            <td>
 
-                            @foreach (var item in Model)
-                            {   
-                                <td class="col-xs-6">
+                                @foreach (var item in Model)
+                                {   
+                                    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
 
-                                    <img src="~/Gallery/@(Path.GetFileName(item.FilePath))" width="150" height="150" alt="Image not found" />
+                                        <img src="~/Gallery/@(Path.GetFileName(item.FilePath))" width="550" height="400" style="padding:5px" alt="Image not found" />
+                                    </div>
+                                }
+                            </td>
 
-                                </td>
 
-                            }
                         </tr>
 
 

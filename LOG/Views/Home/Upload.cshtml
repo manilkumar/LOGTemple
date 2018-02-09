@@ -61,12 +61,12 @@
 
                                         case Upload.Tract:
 
-                                        <a href="~/Gallery/@( Path.GetFileName(item.FilePath))" target="_blank">@item.Title</a>
+                                        <a href="~/Gallery/@(Path.GetFileName(item.FilePath))" target="_blank">@item.Title</a>
 
                                             break;
 
                                         case Upload.Audio:
-                                        <audio src="~/Gallery/@( Path.GetFileName(item.FilePath))" controls="controls">@item.Title</audio>
+                                        <audio src="~/Gallery/@(Path.GetFileName(item.FilePath))" controls="controls">@item.Title</audio>
                                             break;
 
                                         case Upload.Vedio:
@@ -75,6 +75,9 @@
 
                                             <source src="~/Gallery/@(Path.GetFileName(item.FilePath))" type="video/ogg"/>
                                         </video>
+                                            break;
+                                        case Upload.Gallery:
+                                        <img src="~/Gallery/@(Path.GetFileName(item.FilePath))" width="400" height="200" style="padding:5px" alt="Image not found" />
                                             break;
 
                                     }

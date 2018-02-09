@@ -93,6 +93,12 @@ namespace LOG.Controllers
 
         }
 
+        public ActionResult Ministries()
+        {
+            return View();
+
+        }
+
         [Authorize]
         public ActionResult Upload()
         {
@@ -115,6 +121,7 @@ namespace LOG.Controllers
         [Authorize]
         public ActionResult UploadFiles(UploadModel model)
         {
+            var success = "Uploaded Successfully";
 
             try
             {
@@ -140,13 +147,13 @@ namespace LOG.Controllers
                 }
             }
 
-            catch
+            catch (Exception ex)
             {
 
-
+                success = "Unable to upload " + ex.StackTrace;
             }
 
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(success, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Messages(short type)
@@ -168,7 +175,6 @@ namespace LOG.Controllers
 
             return View(gallery);
 
-            return View();
         }
     }
 }
