@@ -52,6 +52,12 @@ namespace LOG.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.Abandon();
+            Session.RemoveAll();
+            HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(1));
+            HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Response.Cache.SetNoStore();
 
             return RedirectToAction("Index", "Home");
         }
