@@ -182,5 +182,25 @@ namespace LOG.Controllers
             return View(gallery);
 
         }
+
+        public PartialViewResult ReplyVisitor()
+        {
+
+            return PartialView("_ReplyVisitor");
+
+        }
+
+        public void ViewPDF(string fileName)
+        {
+            if (!string.IsNullOrEmpty(fileName))
+            {
+
+                string filePath = Server.MapPath("~/Gallery/" + fileName + "");
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("Content-Disposition;", "attachment;filename=" + fileName + "");
+                Response.WriteFile(filePath);
+                Response.End();
+            }
+        }
     }
 }

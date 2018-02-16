@@ -26,7 +26,16 @@
     <!-- skin -->
     <link rel="stylesheet" href="~/skin/default.css">
 
-    <script src="~/js/jquery.js"></script>
+    @*<script src="~/js/jquery.js"></script>*@
+    <script src="~/Scripts/jquery-1.8.0.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/js/Dialogs.js"></script>
+
+    <script src="~/js/jquery-customPlugins.js"></script>
 
 </head>
 
@@ -56,8 +65,8 @@
                         @if (HttpContext.Current.User.Identity.IsAuthenticated)
                         {
 
-                            <li class="active"><a href="/Home/Upload">Upload</a></li>
-                            <li class="active"><a href="/Home/Visitors">Vistors</a></li>
+                            <li><a href="/Home/Upload">Upload</a></li>
+                            <li><a href="/Home/Visitors">Vistors</a></li>
 
                         }
 
@@ -146,6 +155,23 @@
         </div>
 
     </section>
+
+   <div class="modal fade" id="modalDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="Close">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white btn-sm" data-dismiss="modal" title="Close">Close</button>
+                    <button type="button" class="btn btn-info btn-sm btn-action" title="Save Changes">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="~/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
