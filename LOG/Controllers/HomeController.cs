@@ -101,6 +101,8 @@ namespace LOG.Controllers
 
         public ActionResult Ministries()
         {
+            LOGDAL.Email("anilkumar.m@mwebware.com", "hi", "Hello", "anileeerit@gmail.com", "Anil", "anileeerit@gmail.com", "Jesus@1myhero", null); ;
+
             return View();
 
         }

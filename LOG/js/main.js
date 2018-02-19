@@ -7,6 +7,12 @@
             $('.scrollup').fadeOut();
         }
     });
+
+    //$(window).load(function () {
+    //    $(".bg_load").fadeOut("slow");
+    //    //$(".wrapper").fadeOut("slow");
+    //})
+
     $('.scrollup').click(function () {
         $("html, body").animate({ scrollTop: 0 }, 1000);
         return false;

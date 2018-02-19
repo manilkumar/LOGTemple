@@ -120,6 +120,7 @@
     <Compile Include="LOGDAL.cs" />
     <Compile Include="Models\CommonModels.cs" />
     <Compile Include="Models\LogConstants.cs" />
+    <Compile Include="Models\MailAttachment.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,7 +240,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="skin\default.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

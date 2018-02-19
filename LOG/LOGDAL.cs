@@ -9,6 +9,9 @@ using Newtonsoft.Json.Linq;
 using System.Web.Script.Serialization;
 using System.IO;
 using Newtonsoft.Json;
+using System.Configuration;
+using System.Text;
+using System.Net.Mail;
 
 
 namespace LOG
@@ -240,6 +243,67 @@ namespace LOG
             }
 
             return itemsList;
+        }
+
+        /// <summary>
+        /// Send an email from [DELETED]
+        /// </summary>
+        /// <param name="to">Message to address</param>
+        /// <param name="body">Text of message to send</param>
+        /// <param name="subject">Subject line of message</param>
+        /// <param name="fromAddress">Message from address</param>
+        /// <param name="fromDisplay">Display name for "message from address"</param>
+        /// <param name="credentialUser">User whose credentials are used for message send</param>
+        /// <param name="credentialPassword">User password used for message send</param>
+        /// <param name="attachments">Optional attachments for message</param>
+        public static void Email(string to,
+                                 string body,
+                                 string subject,
+                                 string fromAddress,
+                                 string fromDisplay,
+                                 string credentialUser,
+                                 string credentialPassword,
+                                 params MailAttachment[] attachments)
+        {
+            string host = ConfigurationManager.AppSettings["SMTPHost"];
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                mail.To.Add(new MailAddress(to));
+                mail.From = new MailAddress(fromAddress, fromDisplay, Encoding.UTF8);
+                mail.Subject = subject;
+                mail.SubjectEncoding = Encoding.UTF8;
+                mail.Priority = MailPriority.Normal;
+
+                if (attachments != null)
+                {
+
+                    foreach (MailAttachment ma in attachments)
+                    {
+                        mail.Attachments.Add(ma.File);
+                    }
+                }
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Credentials = new System.Net.NetworkCredential(credentialUser, credentialPassword);
+                smtp.Host = "smtp.gmail.com";
+                smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                StringBuilder sb = new StringBuilder(1024);
+                sb.Append("\nTo:" + to);
+                sb.Append("\nbody:" + body);
+                sb.Append("\nsubject:" + subject);
+                sb.Append("\nfromAddress:" + fromAddress);
+                sb.Append("\nfromDisplay:" + fromDisplay);
+                sb.Append("\ncredentialUser:" + credentialUser);
+                sb.Append("\ncredentialPasswordto:" + credentialPassword);
+                sb.Append("\nHosting:" + host);
+            }
         }
     }
 }
