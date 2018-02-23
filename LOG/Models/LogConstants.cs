@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +15,16 @@ namespace LOG.Models
         public static string UploadTable = "UploadItems";
 
         public static string APP_DATA_PATH = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/");
+
+        public static string GMAILUserName = ConfigurationManager.AppSettings["UserName"];
+
+        public static string GMAILPassword = ConfigurationManager.AppSettings["Password"];
+
+        public static string SMTPHost = ConfigurationManager.AppSettings["SMTPHost"];
+
+        public static string DiplayName = ConfigurationManager.AppSettings["DiplayName"];
+
+
     }
 
     public static class About
@@ -48,7 +59,7 @@ namespace LOG.Models
 
         public static string GetUploadType(string type)
         {
-           return GetUploadFileTypes().Where(i => i.Value == type.ToString()).FirstOrDefault().Text;
+            return GetUploadFileTypes().Where(i => i.Value == type.ToString()).FirstOrDefault().Text;
         }
     }
 }

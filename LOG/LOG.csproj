@@ -16,10 +16,10 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -120,7 +120,7 @@
     <Compile Include="LOGDAL.cs" />
     <Compile Include="Models\CommonModels.cs" />
     <Compile Include="Models\LogConstants.cs" />
-    <Compile Include="Models\MailAttachment.cs" />
+    <Compile Include="Models\MailMessage.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,6 +218,8 @@
     <Content Include="js\skrollr.min.js" />
     <Content Include="js\SmoothScroll.js" />
     <Content Include="js\stellar.js" />
+    <Content Include="css\summernote.css" />
+    <Content Include="js\summernote.js" />
     <Content Include="js\UploadScript.js" />
     <Content Include="js\validate.js" />
     <Content Include="js\Visitors.js" />
@@ -231,6 +233,9 @@
     <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\css\mkhplayer.default.css" />
     <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\js\jquery-1.7.1.min.js" />
     <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\js\jquery.mkhplayer.js" />
+    <Content Include="font\summernote.eot" />
+    <Content Include="font\summernote.ttf" />
+    <Content Include="font\summernote.woff" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
@@ -336,9 +341,11 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>52699</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50766/</IISUrl>
+          <IISUrl>https://localhost:44305/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://localhost:44305/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

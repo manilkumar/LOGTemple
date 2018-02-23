@@ -101,8 +101,6 @@ namespace LOG.Controllers
 
         public ActionResult Ministries()
         {
-            LOGDAL.Email("anilkumar.m@mwebware.com", "hi", "Hello", "anileeerit@gmail.com", "Anil", "anileeerit@gmail.com", "Jesus@1myhero", null); ;
-
             return View();
 
         }
@@ -185,11 +183,55 @@ namespace LOG.Controllers
 
         }
 
-        public PartialViewResult ReplyVisitor()
+        public PartialViewResult ReplyVisitor(string emailId)
         {
+            ViewBag.EmailId = emailId;
 
             return PartialView("_ReplyVisitor");
 
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public JsonResult SendEmails(GMailMessage email)
+        {
+            HttpFileCollectionBase files = Request.Files;
+
+            var status = "";
+
+            var filesList = new List<HttpPostedFileBase>();
+
+            if (files.Count > 0)
+            {
+
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFileBase file = files[i];
+
+                    filesList.Add(file);
+                }
+
+            }
+
+            if (string.IsNullOrEmpty(email.TO))
+            {
+
+                var users = logDAL.GetAllVisitors();
+
+                foreach (var user in users)
+                {
+                    status = LOGDAL.Email(user.EmailId, email.Body, email.Subject, filesList);
+
+                }
+            }
+            else
+            {
+
+                status = LOGDAL.Email(email.TO, email.Body, email.Subject, filesList);
+
+            }
+
+            return Json(status, JsonRequestBehavior.AllowGet);
         }
 
         public void ViewPDF(string fileName)

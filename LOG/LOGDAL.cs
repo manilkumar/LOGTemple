@@ -256,16 +256,11 @@ namespace LOG
         /// <param name="credentialUser">User whose credentials are used for message send</param>
         /// <param name="credentialPassword">User password used for message send</param>
         /// <param name="attachments">Optional attachments for message</param>
-        public static void Email(string to,
+        public static string Email(string to,
                                  string body,
                                  string subject,
-                                 string fromAddress,
-                                 string fromDisplay,
-                                 string credentialUser,
-                                 string credentialPassword,
-                                 params MailAttachment[] attachments)
+                                 List<HttpPostedFileBase> attachments)
         {
-            string host = ConfigurationManager.AppSettings["SMTPHost"];
 
             try
             {
@@ -273,7 +268,7 @@ namespace LOG
                 mail.Body = body;
                 mail.IsBodyHtml = true;
                 mail.To.Add(new MailAddress(to));
-                mail.From = new MailAddress(fromAddress, fromDisplay, Encoding.UTF8);
+                mail.From = new MailAddress(LogConstants.GMAILUserName, LogConstants.DiplayName, Encoding.UTF8);
                 mail.Subject = subject;
                 mail.SubjectEncoding = Encoding.UTF8;
                 mail.Priority = MailPriority.Normal;
@@ -281,16 +276,23 @@ namespace LOG
                 if (attachments != null)
                 {
 
-                    foreach (MailAttachment ma in attachments)
+                    foreach (var file in attachments)
                     {
-                        mail.Attachments.Add(ma.File);
+                        var attachment = new Attachment(file.InputStream, file.FileName);
+                        mail.Attachments.Add(attachment);
+                        
                     }
                 }
 
                 SmtpClient smtp = new SmtpClient();
-                smtp.Credentials = new System.Net.NetworkCredential(credentialUser, credentialPassword);
-                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                smtp.Credentials = new System.Net.NetworkCredential(LogConstants.GMAILUserName, LogConstants.GMAILPassword);
+                smtp.Host = LogConstants.SMTPHost;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Port = 587;
                 smtp.Send(mail);
+
+                return "Success";
             }
             catch (Exception ex)
             {
@@ -298,11 +300,13 @@ namespace LOG
                 sb.Append("\nTo:" + to);
                 sb.Append("\nbody:" + body);
                 sb.Append("\nsubject:" + subject);
-                sb.Append("\nfromAddress:" + fromAddress);
-                sb.Append("\nfromDisplay:" + fromDisplay);
-                sb.Append("\ncredentialUser:" + credentialUser);
-                sb.Append("\ncredentialPasswordto:" + credentialPassword);
-                sb.Append("\nHosting:" + host);
+                sb.Append("\nfromAddress:" + LogConstants.SMTPHost);
+                sb.Append("\nfromDisplay:" + LogConstants.DiplayName);
+                sb.Append("\ncredentialUser:" + LogConstants.GMAILUserName);
+                sb.Append("\ncredentialPasswordto:" + LogConstants.GMAILPassword);
+                sb.Append("\nHosting:" + LogConstants.SMTPHost);
+
+                return "Failed" + sb + ex.StackTrace;
             }
         }
     }

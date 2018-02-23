@@ -32,7 +32,7 @@
                                 <td class="col-xs-2">@((item.IsPrayerRequest && item.IsQuery) ? "Prayer Request & Queries" : (item.IsQuery ? "Query" : "Prayer Request"))</td>
                                 <td class="col-xs-4">@item.Message</td>
                                 <td class="col-xs-2">
-                                    <button type="button" data-id="@item.UserId" class="btn btn-primary" title="Reply" id="btnReply"><span class="fa fa-reply"></span></button>
+                                    <button type="button" data-id="@item.UserId" data-email="@item.EmailId" class="btn btn-primary" title="Reply" id="btnReply"><span class="fa fa-reply"></span></button>
                                 </td>
 
                             </tr>
