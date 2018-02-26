@@ -15,7 +15,7 @@
         $(this).parents('tr:first').remove();
     });
 
-
+   
     $(document).on('click', '#btnDelete', function () {
 
         var parent = $(this).parents("tr:first");
