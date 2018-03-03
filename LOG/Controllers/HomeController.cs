@@ -42,6 +42,17 @@ namespace LOG.Controllers
 
             if (isAdmin)
             {
+                string UserData = login.UserName + "|" + login.Password;
+
+                FormsAuthentication.Initialize();
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, login.UserName.ToString(), DateTime.Now, DateTime.Now.AddDays(30), true, UserData);
+
+                var authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket))
+                {
+                    Expires = ticket.Expiration
+                };
+                Response.Cookies.Add(authenticationCookie);
+
                 FormsAuthentication.SetAuthCookie(login.UserName, true);
             }
 
@@ -51,10 +62,19 @@ namespace LOG.Controllers
 
         public ActionResult Logout()
         {
+
+            Session.Clear();
+            Session.Abandon();
+            Session.RemoveAll();
+
             FormsAuthentication.SignOut();
             Session.Clear();
             Session.Abandon();
             Session.RemoveAll();
+            HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(1));
+            HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Response.Cache.SetNoStore();
+
             HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(1));
             HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             HttpContext.Response.Cache.SetNoStore();
@@ -110,10 +130,12 @@ namespace LOG.Controllers
         {
             ViewBag.Items = logDAL.GetUploadedItems();
 
+
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult DeleteUploaded(int uploadId)
         {
 
