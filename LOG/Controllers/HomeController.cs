@@ -24,7 +24,7 @@ namespace LOG.Controllers
         public ActionResult Login()
         {
 
-            return View();
+            return View(new UserModel());
         }
 
         [HttpPost]
@@ -40,6 +40,7 @@ namespace LOG.Controllers
         {
             var isAdmin = logDAL.IsAdmin(login);
 
+
             if (isAdmin)
             {
                 string UserData = login.UserName + "|" + login.Password;
@@ -54,9 +55,17 @@ namespace LOG.Controllers
                 Response.Cookies.Add(authenticationCookie);
 
                 FormsAuthentication.SetAuthCookie(login.UserName, true);
+
+                return RedirectToAction("Index");
+
             }
 
-            return RedirectToAction("Index");
+            else
+            {
+                login.IsAdmin = isAdmin;
+
+                return View("Login", login);
+            }
 
         }
 
@@ -197,9 +206,9 @@ namespace LOG.Controllers
             return PartialView("_UploadNew");
         }
 
-        public ActionResult Gallery()
+        public ActionResult Gallery(short type)
         {
-            var gallery = logDAL.GetGalleryImages();
+            var gallery = logDAL.GetGalleryImages(type);
 
             return View(gallery);
 

@@ -228,7 +228,7 @@ namespace LOG
             return isDeleted;
         }
 
-        public List<UploadModel> GetGalleryImages()
+        public List<UploadModel> GetGalleryImages(short itemType)
         {
             var itemsList = new List<UploadModel>();
 
@@ -238,7 +238,7 @@ namespace LOG
             if (File.Exists(jsonFilePath))
             {
 
-                itemsList = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath)).Where(i => i.UploadType == Upload.Gallery.ToString()).ToList();
+                itemsList = JsonConvert.DeserializeObject<List<UploadModel>>(File.ReadAllText(jsonFilePath)).Where(i => i.UploadType == Upload.Gallery.ToString() && i.GalleryType == itemType).ToList();
 
             }
 
@@ -280,7 +280,7 @@ namespace LOG
                     {
                         var attachment = new Attachment(file.InputStream, file.FileName);
                         mail.Attachments.Add(attachment);
-                        
+
                     }
                 }
 

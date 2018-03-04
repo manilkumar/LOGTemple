@@ -118,7 +118,21 @@
 
                         </li>*@
 
-                        <li><a href="/Home/Gallery">Gallery</a></li>
+                        <li class="dropdown">
+
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Gallery
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Home/Gallery?type=@LOG.Models.GalleryType.Gospel">Gospel</a></li>
+                                <li><a href="/Home/Gallery?type=@LOG.Models.GalleryType.Baptism">Baptism</a></li>
+                                <li><a href="/Home/Gallery?type=@LOG.Models.GalleryType.Anniversary">Anniversary</a></li>
+                                <li><a href="/Home/Gallery?type=@LOG.Models.GalleryType.ChristmasNewYear">Christmas & NewYear</a></li>
+                                <li><a href="/Home/Gallery?type=@LOG.Models.GalleryType.SpecailEvents">Special Events</a></li>
+                            </ul>
+
+                        </li>
 
                         <li><a href="#contact" id="a_contact">Contact</a></li>
 
