@@ -48,6 +48,8 @@ namespace LOG.Models
         public string FilePath { get; set; }
 
         public int UploadId { get; set; }
+
+        public short GalleryType { get; set; }
     
     }
 

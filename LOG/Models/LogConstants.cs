@@ -62,4 +62,33 @@ namespace LOG.Models
             return GetUploadFileTypes().Where(i => i.Value == type.ToString()).FirstOrDefault().Text;
         }
     }
+
+    public static class GalleryType
+    {
+        public const short Gospel = 1;
+        public const short Baptism = 2;
+        public const short Anniversary = 3;
+        public const short ChristmasNewYear = 4;
+        public const short SpecailEvents = 5;
+
+        public static List<SelectListItem> GetGalleryTypes()
+        {
+
+            var list = new List<SelectListItem>();
+
+            list.Add(new SelectListItem { Value = Upload.Tract.ToString(), Text = "Gospel" });
+            list.Add(new SelectListItem { Value = Upload.Audio.ToString(), Text = "Baptism" });
+            list.Add(new SelectListItem { Value = Upload.Vedio.ToString(), Text = "Anniversary" });
+            list.Add(new SelectListItem { Value = Upload.Gallery.ToString(), Text = "ChristmasNewYear" });
+            list.Add(new SelectListItem { Value = Upload.Gallery.ToString(), Text = "SpecailEvents" });
+
+            return list;
+
+        }
+
+        public static string GetGalleryType(string type)
+        {
+            return GetGalleryTypes().Where(i => i.Value == type.ToString()).FirstOrDefault().Text;
+        }
+    }
 }

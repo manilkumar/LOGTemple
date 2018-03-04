@@ -6,24 +6,24 @@
             <input type="text" class="form-control" placeholder="Title of file" id="title" name="FileName" />
         </div>
     </td>
-    <td class="col-xs-3">
+    <td class="col-xs-4">
         <label class="col-xs-2">Type</label>
-        <div class="col-xs-10">
+        <div class="col-xs-5">
+            @Html.DropDownList("UploadType", Upload.GetUploadFileTypes() as IEnumerable<SelectListItem>, "Select Type", new { @id = "type" })
+        </div>
+        <div class="col-xs-5 tdGallItem hide">
+            @Html.DropDownList("GalleryType", GalleryType.GetGalleryTypes() as IEnumerable<SelectListItem>, "Select Item", new { @id = "galleryType" })
 
-            @Html.DropDownList("FileType", Upload.GetUploadFileTypes() as IEnumerable<SelectListItem>, "Select Type", new { @id = "type" })
         </div>
     </td>
-    <td class="col-xs-5">
+  
+    <td class="col-xs-4">
         <div class="col-xs-7">
-
             <input type="file" multiple />
         </div>
-
         <div class="col-xs-5">
             <button type="button" class="btn btn-danger pull-right" id="btnCancelUpload"><span class="fa fa-remove"></span></button>
-
             <button type="button" class="btn btn-success pull-right" id="btnSaveItems"><span></span>Upload</button>
         </div>
     </td>
-
 </tr>

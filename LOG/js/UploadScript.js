@@ -10,12 +10,28 @@
         });
     });
 
+    $(document).on('change', '#type', function () {
+
+        var element = $(this);
+
+        var parent = $(element).parents('tr:first');
+
+        if ($(element).val() == '4') {
+
+            $(parent).find('.tdGallItem').removeClass('hide');
+        } else {
+            $(parent).find('.tdGallItem').addClass('hide');
+            $(element).val('');
+        }
+
+    });
+
     $(document).on('click', '#btnCancelUpload', function () {
 
         $(this).parents('tr:first').remove();
     });
 
-   
+
     $(document).on('click', '#btnDelete', function () {
 
         var parent = $(this).parents("tr:first");
@@ -56,6 +72,7 @@
         }
 
         fileData.append("UploadType", parent.find("#type").val());
+        fileData.append("GalleryType", parent.find("#galleryType").val());
         fileData.append("Title", parent.find("#title").val());
 
         $.ajax({

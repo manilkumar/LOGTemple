@@ -3,48 +3,7 @@
     "UploadType": "1",
     "Title": "fdsfds",
     "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\pdf.pdf",
-    "UploadId": 1
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\1fyd2-knbif.jpg",
-    "UploadId": 2
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\1lnco-p32un.jpg",
-    "UploadId": 3
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\1zj0r-dhqqo.jpg",
-    "UploadId": 4
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\3hl8d-3fnnz.jpg",
-    "UploadId": 5
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\3otlm-ckmip.jpg",
-    "UploadId": 6
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\4ryqa-r3jx8.jpg",
-    "UploadId": 7
-  },
-  {
-    "UploadType": "4",
-    "Title": "Gallery",
-    "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\4veyk-ule21.jpg",
-    "UploadId": 8
+    "UploadId": 1,
+    "GalleryType": 0
   }
 ]
