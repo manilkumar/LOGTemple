@@ -74,6 +74,7 @@
         fileData.append("UploadType", parent.find("#type").val());
         fileData.append("GalleryType", parent.find("#galleryType").val());
         fileData.append("Title", parent.find("#title").val());
+        fileData.append("URL", parent.find("#url").val());
 
         $.ajax({
             url: '/Home/UploadFiles',
