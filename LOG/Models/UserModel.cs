@@ -50,6 +50,8 @@ namespace LOG.Models
         public int UploadId { get; set; }
 
         public short GalleryType { get; set; }
+
+        public string URL { get; set; }
     
     }
 

@@ -48,10 +48,12 @@
                                             break;
 
                                         case Upload.Vedio:
-                                        <video controls="controls">
+                                        @*<video controls="controls">
 
-                                            <source src="~/Gallery/@(Path.GetFileName(item.FilePath))"/>
-                                        </video>
+                                            <source src="https://www.youtube.com/embed/RZEcdcTlQzk" />
+                                        </video>*@ 
+                                    <iframe width="560" height="315" src="@item.URL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
                                             break;
 
                                     }
