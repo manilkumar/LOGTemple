@@ -8,6 +8,7 @@
     .table-fixed tbody {
         height: 230px;
         overflow-y: auto;
+        overflow-x:auto;
         width: 100%;
     }
 
@@ -71,10 +72,12 @@
 
                                         case Upload.Vedio:
                                         
-                                        <video controls="controls">
+                                        @*<video controls="controls">
 
                                             <source src="~/Gallery/@(Path.GetFileName(item.FilePath))" type="video/ogg"/>
-                                        </video>
+                                        </video>*@
+                                        <iframe width="400" height="200" src="@item.URL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
                                             break;
                                         case Upload.Gallery:
                                         <img src="~/Gallery/@(Path.GetFileName(item.FilePath))" width="400" height="200" style="padding:5px" alt="Image not found" />
