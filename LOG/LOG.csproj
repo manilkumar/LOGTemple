@@ -191,6 +191,63 @@
     <Content Include="img\team\3.jpg" />
     <Content Include="img\team\4.jpg" />
     <Content Include="index.html" />
+    <Content Include="jsImgSlider\demo1.html" />
+    <Content Include="jsImgSlider\demo2.html" />
+    <Content Include="jsImgSlider\demo3.html" />
+    <Content Include="jsImgSlider\demo4.html" />
+    <Content Include="jsImgSlider\demo5.html" />
+    <Content Include="jsImgSlider\demo6.html" />
+    <Content Include="jsImgSlider\demo7.html" />
+    <Content Include="jsImgSlider\demo8.html" />
+    <Content Include="jsImgSlider\generic.css" />
+    <Content Include="jsImgSlider\images\image-slider-1.jpg" />
+    <Content Include="jsImgSlider\images\image-slider-2.jpg" />
+    <Content Include="jsImgSlider\images\image-slider-3.jpg" />
+    <Content Include="jsImgSlider\images\image-slider-4.jpg" />
+    <Content Include="jsImgSlider\images\image-slider-5.jpg" />
+    <Content Include="jsImgSlider\images\slider-1.jpg" />
+    <Content Include="jsImgSlider\images\slider-2.jpg" />
+    <Content Include="jsImgSlider\images\slider-3.jpg" />
+    <Content Include="jsImgSlider\images\slider-4.jpg" />
+    <Content Include="jsImgSlider\images\thumb-1.gif" />
+    <Content Include="jsImgSlider\images\thumb-2.gif" />
+    <Content Include="jsImgSlider\images\thumb-3.gif" />
+    <Content Include="jsImgSlider\images\thumb-4.gif" />
+    <Content Include="jsImgSlider\images\thumb1.jpg" />
+    <Content Include="jsImgSlider\images\thumb2.jpg" />
+    <Content Include="jsImgSlider\images\thumb3.jpg" />
+    <Content Include="jsImgSlider\images\thumb4.jpg" />
+    <Content Include="jsImgSlider\images\thumb5.jpg" />
+    <Content Include="jsImgSlider\themes\1\bullet.png" />
+    <Content Include="jsImgSlider\themes\1\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\1\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\2\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\2\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\3\active-bg.png" />
+    <Content Include="jsImgSlider\themes\3\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\3\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\3\thumbs-bar.gif" />
+    <Content Include="jsImgSlider\themes\4\active-bg.png" />
+    <Content Include="jsImgSlider\themes\4\bullet.png" />
+    <Content Include="jsImgSlider\themes\4\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\4\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\4\navbuttons.gif" />
+    <Content Include="jsImgSlider\themes\4\navbuttons2.gif" />
+    <Content Include="jsImgSlider\themes\4\thumbs-bar.gif" />
+    <Content Include="jsImgSlider\themes\5\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\5\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\6\bullet.png" />
+    <Content Include="jsImgSlider\themes\6\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\6\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\6\mcVideoPlugin.js" />
+    <Content Include="jsImgSlider\themes\6\video.png" />
+    <Content Include="jsImgSlider\themes\7\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\7\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\8\closeBtn.gif" />
+    <Content Include="jsImgSlider\themes\8\js-image-slider.css" />
+    <Content Include="jsImgSlider\themes\8\js-image-slider.js" />
+    <Content Include="jsImgSlider\themes\8\tooltip.css" />
+    <Content Include="jsImgSlider\themes\8\tooltip.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\Dialogs.js" />
     <Content Include="js\fancybox\blank.gif" />
@@ -227,15 +284,6 @@
     <Content Include="js\validate.js" />
     <Content Include="js\Visitors.js" />
     <Content Include="js\wow.min.js" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\.gitattributes" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\examples\example.html" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\index.html" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\media\interlude.mp3" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\media\small.mp4" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\css\controls.png" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\css\mkhplayer.default.css" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\js\jquery-1.7.1.min.js" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\src\js\jquery.mkhplayer.js" />
     <Content Include="font\summernote.eot" />
     <Content Include="font\summernote.ttf" />
     <Content Include="font\summernote.woff" />
@@ -313,11 +361,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_UploadNew.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\LICENSE" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\README.md" />
-    <Content Include="Pretty-Simple-HTML5-Audio-Video-Player-jQuery-MKH-Player\_config.yml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Messages.cshtml" />
