@@ -71,19 +71,10 @@ namespace LOG.Controllers
 
         public ActionResult Logout()
         {
-
-            Session.Clear();
-            Session.Abandon();
-            Session.RemoveAll();
-
             FormsAuthentication.SignOut();
             Session.Clear();
             Session.Abandon();
             Session.RemoveAll();
-            HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(1));
-            HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            HttpContext.Response.Cache.SetNoStore();
-
             HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(1));
             HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             HttpContext.Response.Cache.SetNoStore();
