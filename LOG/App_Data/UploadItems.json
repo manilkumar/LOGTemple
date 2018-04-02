@@ -4,20 +4,87 @@
     "Title": "fdsfds",
     "FilePath": "C:\\Users\\manilkumar\\Documents\\Visual Studio 2012\\Projects\\LOG\\LOGTemple\\LOG\\Gallery\\pdf.pdf",
     "UploadId": 1,
-    "GalleryType": 0
+    "GalleryType": 0,
+    "URL": null
   },
   {
     "UploadType": "4",
     "Title": "gjh",
     "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04264.JPG",
     "UploadId": 2,
-    "GalleryType": 1
+    "GalleryType": 1,
+    "URL": null
   },
   {
     "UploadType": "4",
     "Title": null,
     "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC00048.JPG",
     "UploadId": 3,
-    "GalleryType": 1
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04141.JPG",
+    "UploadId": 4,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04143.JPG",
+    "UploadId": 5,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04144.JPG",
+    "UploadId": 6,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04179.JPG",
+    "UploadId": 7,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04223.JPG",
+    "UploadId": 8,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04264.JPG",
+    "UploadId": 9,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04267.JPG",
+    "UploadId": 10,
+    "GalleryType": 1,
+    "URL": null
+  },
+  {
+    "UploadType": "4",
+    "Title": null,
+    "FilePath": "C:\\Users\\Honeywell\\Documents\\Visual Studio 2013\\Projects\\LOGTemple\\LOG\\Gallery\\DSC04277.JPG",
+    "UploadId": 11,
+    "GalleryType": 1,
+    "URL": null
   }
 ]

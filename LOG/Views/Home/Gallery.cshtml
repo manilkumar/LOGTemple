@@ -1,88 +1,49 @@
 ﻿@using LOG.Models
 @model  IEnumerable<LOG.Models.UploadModel>
 
-<style type="text/css">
-    #uploadTbody a {
-        text-decoration: underline;
-    }
 
-    .prev {
-        color: #00B0FF;
-        font-family: 'Pacifico';
-        font-size: 24px;
-        margin-top: 15px;
-        position: absolute;
-        top: 485px;
-        right: 160px;
-    }
-
-    .next {
-        color: #00B0FF;
-        font-family: 'Pacifico';
-        font-size: 24px;
-        margin-top: 15px;
-        position: absolute;
-        top: 485px;
-        left: 160px;
-    }
-
-    .gallery {
-        width: 800px;
-        height: 430px;
-        margin: 150px auto 100px;
-    }
-</style>
+<link rel="stylesheet" href="~/Gallery-master/css/blueimp-gallery.css">
+<link rel="stylesheet" href="~/Gallery-master/css/blueimp-gallery-indicator.css">
+<link rel="stylesheet" href="~/Gallery-master/css/blueimp-gallery-video.css">
 
 
 <div class="container">
+
     <div class="row" style="padding-top: 150px">
 
         <h1>Our Church Memorable Moments</h1>
+        <br />
+        <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
+        <div id="blueimp-image-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+            <div class="slides">
 
-        <div class="prev btn"><span><i class="fa fa-chevron-right" style="color: green;"></i></span></div>
-        <div class="next btn"><span><i class="fa fa-chevron-left" style="color: green;"></i></span></div>
 
-        <div class="gallery">
-
-            @foreach (var item in Model)
-            {   
-                <a href="#">
-                    <img src="~/Gallery/@(Path.GetFileName(item.FilePath))" width="800" height="500" style="padding:5px" alt="Image not found" />
-
-                </a>   
- 
-            }
-
+            </div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="play-pause"></a>
         </div>
+        <div id="links">
+            @foreach (var item in Model)
+            {
+                <a href="#" data-gallery data-src="/Gallery/@(Path.GetFileName(item.FilePath))">
 
+                </a>
 
+            }
+        </div>
     </div>
-
 
 
 </div>
 
-<script type="text/javascript">
-
-    $(function () {
-
-        $(".gallery").flipping_gallery({
-            direction: "forward", // This is will set the flipping direction when the gallery is clicked. Options available are "forward", or "backward". The default value is forward.
-            selector: "> a", // This will let you change the default selector which by default, will look for <a> tag and generate the gallery from it. This option accepts normal CSS selectors.
-            spacing: 10, // You can set the spacing between each photo in the gallery here. The number represents the pixels between each photos. The default value is 10.
-            showMaximum: 15, // This will let you limit the number of photos that will be in the viewport. In case you have a gazillion photos, this is perfect to hide all those photos and limit only a few in the viewport.
-            enableScroll: true, // Set this to false if you don't want the plugin to override your scrolling behavior. The default value is true.
-            flipDirection: "bottom", // You can now set which direction the picture will flip to. Available options are "left", "right", "top", and "bottom". The default value is bottom.
-            autoplay: 3000 // You can set the gallery to autoplay by defining the interval here. This option accepts value in milliseconds. The default value is false.
-        });
-    });
-
-    $(".next").click(function () {
-        $(".gallery").flipForward();
-        return false;
-    });
-    $(".prev").click(function () {
-        $(".gallery").flipBackward();
-        return false;
-    });
-</script>
+<script src="~/Gallery-master/js/blueimp-helper.js"></script>
+<script src="~/Gallery-master/js/blueimp-gallery.js"></script>
+<script src="~/Gallery-master/js/blueimp-gallery-fullscreen.js"></script>
+<script src="~/Gallery-master/js/blueimp-gallery-indicator.js"></script>
+<script src="~/Gallery-master/js/blueimp-gallery-video.js"></script>
+<script src="~/Gallery-master/js/blueimp-gallery-vimeo.js"></script>
+<script src="~/Gallery-master/js/blueimp-gallery-youtube.js"></script>
+<script src="~/Gallery-master/js/jquery.blueimp-gallery.js"></script>
+<script src="~/Gallery-master/js/demo/demo.js"></script>
